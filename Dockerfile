@@ -2,7 +2,7 @@ FROM golang:alpine AS build-env
 
 RUN apk update && apk add git
 
-RUN go get -d -u gobot.io/x/gobot/...
+RUN go get -d gobot.io/x/gobot/...
 
 WORKDIR /
 
@@ -24,4 +24,5 @@ LABEL "cisco.cpuarch"="x86_64" \
       "cisco.resources.network.0.interface-name"="eth0"
 
 CMD ["./foosball_player1"]
+
 
