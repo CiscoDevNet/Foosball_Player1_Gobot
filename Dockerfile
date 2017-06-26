@@ -1,6 +1,6 @@
 FROM golang:alpine AS build-env
 
-RUN apk update && apk add git && apk add wget
+RUN apk update && apk add git && apk add curl
 
 RUN go get -d gobot.io/x/gobot/...
 
@@ -15,6 +15,7 @@ FROM alpine
 WORKDIR /
 
 COPY --from=build-env /foosball_player1 .
+COPY --from=build-env /foosball_demo/player1_svc/ir_sensor_mqtt_player1.go .
 
 LABEL "cisco.cpuarch"="x86_64"
 LABEL "cisco.resources.profile"="custom"
